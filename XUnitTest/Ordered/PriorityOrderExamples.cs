@@ -1,6 +1,6 @@
-namespace XUnitTest;
+namespace XUnitTest.Ordered;
 
-[TestCaseOrderer("XUnitTest.PriorityOrdererStrategy", "XUnitTest")]
+[TestCaseOrderer("XUnitTest.Ordered.PriorityOrdererStrategy", "XUnitTest")]
 public class PriorityOrderExamples
 {
     [Fact, TestPriority(1)]

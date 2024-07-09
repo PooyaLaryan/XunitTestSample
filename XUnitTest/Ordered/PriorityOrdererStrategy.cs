@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit.Abstractions;
+﻿using Xunit.Abstractions;
 using Xunit.Sdk;
 
-[assembly : CollectionBehavior(DisableTestParallelization = true)]
-namespace XUnitTest;
+[assembly: CollectionBehavior(DisableTestParallelization = true)]
+namespace XUnitTest.Ordered;
 
 public class PriorityOrdererStrategy : ITestCaseOrderer
 {
@@ -19,7 +14,7 @@ public class PriorityOrdererStrategy : ITestCaseOrderer
         {
             int priority = 0;
 
-            foreach (IAttributeInfo attr in testCase.TestMethod.Method.GetCustomAttributes((typeof(TestPriorityAttribute).AssemblyQualifiedName)))
+            foreach (IAttributeInfo attr in testCase.TestMethod.Method.GetCustomAttributes(typeof(TestPriorityAttribute).AssemblyQualifiedName))
                 priority = attr.GetNamedArgument<int>("Priority");
 
             GetOrCreate(sortedMethods, priority).Add(testCase);
