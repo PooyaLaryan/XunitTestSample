@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,13 +13,14 @@ namespace XUnitTest.ClassFixtures
 
         public MyClassTest1(MyClassFixtuer fixtuer)
         {
-            this.fixtuer = fixtuer;
+            this.fixtuer = fixtuer;        
         }
 
         [Fact]
         public void TestClass()
         {
             var t = fixtuer.Db;
+            Trace.WriteLine("MyClassTest1 TestClass");
 
         }
     }
