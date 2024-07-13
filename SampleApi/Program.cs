@@ -1,7 +1,5 @@
-using Microsoft.EntityFrameworkCore;
 using SampleApi;
 using SampleApi.Data;
-using System.Transactions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -50,3 +48,4 @@ void DbInitializerIfNotExists()
         }
     }
 }
+public partial class Program { }

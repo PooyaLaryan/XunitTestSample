@@ -88,6 +88,7 @@ public abstract class Repository<TEntity>(AppDbContext dbContext) : IRepository<
         {
             query = query.Include(includeProperty);
         }*/
+
         if (includeProperties != null)
         {
             foreach (var Property in includeProperties)
