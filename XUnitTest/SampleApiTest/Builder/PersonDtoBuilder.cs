@@ -1,5 +1,6 @@
 ﻿using Bogus;
 using Bogus.DataSets;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using NuGet.Frameworks;
 using SampleApi.Model;
 using System;
@@ -16,6 +17,7 @@ namespace XUnitTest.SampleApiTest.Builder
         public int _id;
         public string _name;
         public string _description;
+
         public PersonDto Build()
         {
             return new Faker<PersonDto>().CustomInstantiator(faker => new PersonDto
