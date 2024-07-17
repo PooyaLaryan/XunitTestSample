@@ -16,9 +16,16 @@ namespace SampleApi.Service
             await unitOfWork.SaveChangesAsync();
             return entity.Id;
         }
+
+        void IPersonService.ExplicitMethodTest()
+        {
+            throw new NotImplementedException();
+        }
     }
     public interface IPersonService
     {
         Task<int> InsertAsync(PersonDto personDto);
+        //just 
+        void ExplicitMethodTest();
     }
 }

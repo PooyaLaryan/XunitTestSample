@@ -19,13 +19,24 @@ namespace SampleApi.Data.Entities
         }
     }
 
-    public class PersonConfig : IEntityTypeConfiguration<Person>
+    public abstract class EntityConfig<T> : IEntityTypeConfiguration<T> where T : Entity
     {
-        public void Configure(EntityTypeBuilder<Person> builder)
+        public void Configure(EntityTypeBuilder<T> builder)
+        {
+            builder.HasKey(p => p.Id);
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
+
+            ConfigTable(builder);
+        }
+
+        public abstract void ConfigTable(EntityTypeBuilder<T> builder);
+    }
+
+    public class PersonConfig() : EntityConfig<Person>
+    {
+        public override void ConfigTable(EntityTypeBuilder<Person> builder)
         {
             builder.ToTable(nameof(Person));
-            builder.HasKey(p => p.Id);
-            builder.Property(x=>x.Id).ValueGeneratedOnAdd();
         }
     }
 }

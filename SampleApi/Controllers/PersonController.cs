@@ -12,6 +12,7 @@ public class PersonController(IPersonService personService) : ControllerBase
     public async Task<IActionResult> InsertAsync(PersonDto personDto)
     {
         var id = await personService.InsertAsync(personDto);
+        personService.ExplicitMethodTest();
         return Ok(id);
     }
 }
